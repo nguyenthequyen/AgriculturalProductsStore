@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <link href="~/css/form-account.css" rel="stylesheet" />
+}
+<div id="logreg-forms">
+    <form action="/signup/" class="form-signup">
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Đăng ký tài khoản</h1>
+        <div class="social-login">
+            <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Đăng ký với Facebook</span> </button>
+            <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Đăng ký với Google</span> </button>
+        </div>
+
+        <p style="text-align:center">Hoặc</p>
+
+        <input type="text" id="user-name" class="form-control mt-2" placeholder="Họ và tên đệm" required="" autofocus="">
+        <input type="email" id="user-email" class="form-control mt-2" placeholder="Email" required autofocus="">
+        <input type="password" id="user-pass" class="form-control mt-2" placeholder="Mật khẩu" required autofocus="">
+        <input type="password" id="user-repeatpass" class="form-control mt-2" placeholder="Xác nhận mật khẩu" required autofocus="">
+
+        <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Đăng ký</button>
+        <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Đăng nhập</a>
+    </form>
+</div>
+
