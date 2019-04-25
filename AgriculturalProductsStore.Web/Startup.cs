@@ -13,6 +13,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AgriculturalProductsStore.Repository;
+using AgriculturalProductsStore.Models.Entity;
+using AgriculturalProductsStore.Web.Middleware;
 
 namespace AgriculturalProductsStore.Web
 {
@@ -35,17 +37,14 @@ namespace AgriculturalProductsStore.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<ApplicationIdentityDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDbContext<AgriculturalProductsStoreDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+            .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
+            .AddDefaultUI()
+            .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -68,6 +67,8 @@ namespace AgriculturalProductsStore.Web
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.ConfigureCustomExceptionMiddleware();
 
             app.UseAuthentication();
 

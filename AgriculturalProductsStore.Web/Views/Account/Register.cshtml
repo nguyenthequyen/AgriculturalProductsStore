@@ -1,13 +1,14 @@
-﻿
+﻿@model AgriculturalProductsStore.Web.ViewModels.Account.RegisterViewModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Đăng ký tài khoản";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Styles {
     <link href="~/css/form-account.css" rel="stylesheet" />
 }
 <div id="logreg-forms">
-    <form action="/signup/" class="form-signup">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <form method="post" asp-action="Register">
         <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Đăng ký tài khoản</h1>
         <div class="social-login">
             <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Đăng ký với Facebook</span> </button>
@@ -16,10 +17,11 @@
 
         <p style="text-align:center">Hoặc</p>
 
-        <input type="text" id="user-name" class="form-control mt-2" placeholder="Họ và tên đệm" required="" autofocus="">
-        <input type="email" id="user-email" class="form-control mt-2" placeholder="Email" required autofocus="">
-        <input type="password" id="user-pass" class="form-control mt-2" placeholder="Mật khẩu" required autofocus="">
-        <input type="password" id="user-repeatpass" class="form-control mt-2" placeholder="Xác nhận mật khẩu" required autofocus="">
+        <input type="text" class="form-control mt-2" placeholder="Họ đệm" asp-for="LastName" required="" autofocus="">
+        <input type="text" class="form-control mt-2" placeholder="Tên" asp-for="FirstName" required="" autofocus="">
+        <input type="text" class="form-control mt-2" placeholder="Số điện thoại/Email" asp-for="Username" required autofocus="">
+        <input type="password" class="form-control mt-2" placeholder="Mật khẩu" asp-for="Password" required autofocus="">
+        <input type="password" class="form-control mt-2" placeholder="Xác nhận mật khẩu" asp-for="ConfirmPassword" required autofocus="">
 
         <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Đăng ký</button>
         <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Đăng nhập</a>

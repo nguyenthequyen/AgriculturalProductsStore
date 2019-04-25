@@ -1,6 +1,6 @@
 ﻿@model AgriculturalProductsStore.Web.ViewModels.Account.LoginViewModel
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Đăng nhập";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section Styles {
@@ -8,16 +8,16 @@
 }
 <div id="logreg-forms">
     @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-    <form class="form-signin" method="post" asp-route="Login">
+    <form class="form-signin" method="post" asp-action="Login">
         <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Đăng nhập</h1>
         <div class="social-login">
             <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Đăng nhập với Facebook</span> </button>
             <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Đăng nhập với Google</span> </button>
         </div>
         <p style="text-align:center"> Hoặc  </p>
-        <input type="email" id="inputEmail" hidden class="form-control rounded" asp-for="ReturnUrl" value="@ViewData["ReturnUrl"]" placeholder="Nhập Email" autofocus="">
-        <input type="email" id="inputEmail" class="form-control rounded" asp-for="Username" placeholder="Email" autofocus="">
-        <input type="password" id="inputPassword" class="form-control mt-2 rounded" asp-for="Password" placeholder="Mật khẩu" >
+        <input id="inputEmail" hidden class="form-control rounded" asp-for="ReturnUrl" value="@ViewData["ReturnUrl"]" placeholder="Nhập Email" autofocus="">
+        <input id="inputEmail" class="form-control rounded" asp-for="Username" placeholder="Số điện thoại/Email" autofocus="">
+        <input type="password" id="inputPassword" class="form-control mt-2 rounded" asp-for="Password" placeholder="Mật khẩu">
         <div class="custom-control custom-checkbox pt-2">
             <input type="checkbox" asp-for="RememberLogin" class="custom-control-input" id="customCheck1">
             <label class="custom-control-label" for="customCheck1">Nhớ mật khẩu?</label>

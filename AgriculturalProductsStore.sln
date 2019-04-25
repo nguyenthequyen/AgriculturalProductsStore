@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriculturalProductsStore.Web", "AgriculturalProductsStore.Web\AgriculturalProductsStore.Web.csproj", "{D95B2581-B22E-421A-AC21-93514D0BEEBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgriculturalProductsStore.Web", "AgriculturalProductsStore.Web\AgriculturalProductsStore.Web.csproj", "{D95B2581-B22E-421A-AC21-93514D0BEEBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriculturalProductsStore.Repository", "AgriculturalProductsStore.Repository\AgriculturalProductsStore.Repository.csproj", "{88B222BB-C071-4CB6-9E1A-174196888BEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgriculturalProductsStore.Repository", "AgriculturalProductsStore.Repository\AgriculturalProductsStore.Repository.csproj", "{88B222BB-C071-4CB6-9E1A-174196888BEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriculturalProductsStore.Services", "AgriculturalProductsStore.Services\AgriculturalProductsStore.Services.csproj", "{2BB53CE7-DF7C-4EBE-B93C-0468DE23D44B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgriculturalProductsStore.Services", "AgriculturalProductsStore.Services\AgriculturalProductsStore.Services.csproj", "{2BB53CE7-DF7C-4EBE-B93C-0468DE23D44B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriculturalProductsStore.Models", "AgriculturalProductsStore.Models\AgriculturalProductsStore.Models.csproj", "{BF3F58F8-F363-4F33-8594-959B0B2C552D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriculturalProductsStore.Models", "AgriculturalProductsStore.Models\AgriculturalProductsStore.Models.csproj", "{FFF5A610-8210-456E-96B1-848B06322C2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{2BB53CE7-DF7C-4EBE-B93C-0468DE23D44B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BB53CE7-DF7C-4EBE-B93C-0468DE23D44B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BB53CE7-DF7C-4EBE-B93C-0468DE23D44B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF3F58F8-F363-4F33-8594-959B0B2C552D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF3F58F8-F363-4F33-8594-959B0B2C552D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF3F58F8-F363-4F33-8594-959B0B2C552D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF3F58F8-F363-4F33-8594-959B0B2C552D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFF5A610-8210-456E-96B1-848B06322C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFF5A610-8210-456E-96B1-848B06322C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFF5A610-8210-456E-96B1-848B06322C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFF5A610-8210-456E-96B1-848B06322C2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
