@@ -5,12 +5,13 @@ using System.Text;
 
 namespace AgriculturalProductsStore.Models.Entity
 {
-    public class UserInfor: BaseEntity
+    public class UserInfor : BaseEntity
     {
-        public string Id { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
+        public int? Gender { get; set; }
+        public string Birthday { get; set; }
         public string IdentityUserId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        public ApplicationUser IdentityUser { get; set; }
     }
 }

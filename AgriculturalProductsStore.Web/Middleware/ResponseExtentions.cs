@@ -11,7 +11,7 @@ namespace AgriculturalProductsStore.Web.Middleware
     {
         public static void AddApplicationError(this HttpResponse response, string message)
         {
-            response.Headers.Add("Application-Error", Strings.RemoveAllNonPrintableCharacters(message));
+            response.Headers.Add("Application-Error", StringHelpers.RemoveAllNonPrintableCharacters(message));
             // CORS
             response.Headers.Add("access-control-expose-headers", "Application-Error");
         }

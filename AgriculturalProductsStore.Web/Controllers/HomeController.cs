@@ -8,7 +8,7 @@ using AgriculturalProductsStore.Web.Models;
 
 namespace AgriculturalProductsStore.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public IActionResult Index()
         {

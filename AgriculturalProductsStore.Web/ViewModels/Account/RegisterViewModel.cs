@@ -14,7 +14,6 @@ namespace AgriculturalProductsStore.Web.ViewModels.Account
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Tên tài khoản không được để trống")]
-        [EmailAddress]
         public string Username { get; set; }
 
         [Required(ErrorMessage = "Mật khẩu không được để trống")]

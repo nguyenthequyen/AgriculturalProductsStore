@@ -1,31 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AgriculturalProductsStore.Models.Constants;
 using AgriculturalProductsStore.Models.Entity;
+using AgriculturalProductsStore.Repository;
 using AgriculturalProductsStore.Web.ViewModels.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AgriculturalProductsStore.Web.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ApplicationIdentityDbContext _dbContext;
+        private readonly IEmailSender _emailSender;
         public AccountController(
             SignInManager<ApplicationUser> signInManager,
-            UserManager<ApplicationUser> userManager
+            UserManager<ApplicationUser> userManager,
+            ApplicationIdentityDbContext dbContext,
+            IEmailSender emailSender
             )
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _dbContext = dbContext;
+            _emailSender = emailSender;
         }
         [AllowAnonymous]
-        public async Task<IActionResult> Login(string returnUrl = null)
+        public IActionResult Login(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             return View();
@@ -104,7 +113,7 @@ namespace AgriculturalProductsStore.Web.Controllers
         }
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Register(string returnUrl = null)
+        public IActionResult Register(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             return View();
@@ -129,12 +138,67 @@ namespace AgriculturalProductsStore.Web.Controllers
                     }
                     else
                     {
+                        user = new ApplicationUser
+                        {
+                            UserName = model.Username,
+                            Email = model.Username
+                        };
+                        var resultCreatedUser = await _userManager.CreateAsync(user, model.Password);
 
+                        if (resultCreatedUser.Succeeded)
+                        {
+                            var userInfor = new UserInfor
+                            {
+                                FirstName = model.FirstName,
+                                LastName = model.LastName,
+                                IdentityUserId = user.Id
+                            };
+                            _dbContext.UserInfors.Add(userInfor);
+                            _dbContext.SaveChanges();
+                            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                            var callbackUrl = Url.Action(
+                                "ConfirmEmail",
+                                "Account",
+                                new { userId = user.Id, code = code },
+                                HttpContext.Request.Scheme
+                                );
+                            var url = string.Format("Vui lòng xác nhận tài khoản của bạn bằng cách nhấn &lt;a href='{0}'&gt;vào đây&lt;/a&gt;.", HtmlEncoder.Default.Encode(callbackUrl));
+                            await _emailSender.SendEmailAsync(model.Username, "Xác nhận tài khoản của  bạn", url);
+                            //await _signInManager.SignInAsync(user, isPersistent: false);
+                            return RedirectToLocal(returnUrl);
+                        }
                     }
                 }
                 else if (matchPhone.Success)
                 {
+                    user = await _userManager.FindByEmailAsync(model.Username);
+                    if (user != null)
+                    {
+                        ModelState.AddModelError("Username", "Email này đã được đăng ký tài khoản.");
+                        return View(model);
+                    }
+                    else
+                    {
+                        user = new ApplicationUser
+                        {
+                            UserName = model.Username,
+                            PhoneNumber = model.Username,
+                            PhoneNumberConfirmed = true
+                        };
+                        var result = await _userManager.CreateAsync(user, model.Password);
 
+                        if (result.Succeeded)
+                        {
+                            var userInfor = new UserInfor
+                            {
+                                FirstName = model.FirstName,
+                                LastName = model.LastName,
+                                IdentityUserId = user.Id,
+                            };
+                            _dbContext.UserInfors.Add(userInfor);
+                            _dbContext.SaveChanges();
+                        }
+                    }
                 }
                 else
                 {
@@ -146,20 +210,58 @@ namespace AgriculturalProductsStore.Web.Controllers
         }
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> ResetPassword(string returnUrl)
+        public IActionResult ResetPassword(string returnUrl)
         {
             return View();
         }
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Lockout(string returnUrl)
+        public IActionResult Lockout(string returnUrl)
         {
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId, string code, string returnUrl = null)
+        {
+            if (userId == null || code == null)
+            {
+                return View("Error");
+            }
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return View("Error");
+            }
+            var result = await _userManager.ConfirmEmailAsync(user, code);
+            if (result.Succeeded)
+            {
+                await _signInManager.SignInAsync(user, isPersistent: true);
+                return RedirectToLocal(returnUrl);
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
         public IActionResult Index()
         {
             return View();
         }
+
+        #region private
+        private IActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
+        #endregion
     }
 }

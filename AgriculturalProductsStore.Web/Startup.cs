@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using AgriculturalProductsStore.Repository;
 using AgriculturalProductsStore.Models.Entity;
 using AgriculturalProductsStore.Web.Middleware;
+using AgriculturalProductsStore.Web.Helpers;
 
 namespace AgriculturalProductsStore.Web
 {
@@ -37,14 +38,8 @@ namespace AgriculturalProductsStore.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationIdentityDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            services.RegisterDatabase(Configuration);
 
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
-            .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
-            .AddDefaultUI()
-            .AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

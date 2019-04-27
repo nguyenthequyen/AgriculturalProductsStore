@@ -1,4 +1,5 @@
 ﻿using AgriculturalProductsStore.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,7 +18,6 @@ namespace AgriculturalProductsStore.Repository.BaseRepository
         {
             _dbContext.Set<TEntity>().Add(entity);
         }
-
         public virtual void Delete(TEntity entity)
         {
             _dbContext.Set<TEntity>().Remove(entity);

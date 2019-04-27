@@ -1,0 +1,123 @@
+﻿@using AgriculturalProductsStore.Web.ViewModels.ManagerAccount
+@model AgriculturalProductsStore.Web.ViewModels.ManagerAccount.UpdateUserViewModel
+@{
+    var userInfor = ViewData["userInforViewModel"] as UserInforViewModel;
+    var uservm = ViewData["UserViewModel"] as UserViewModel;
+}
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Membership/_MembershipLayout.cshtml";
+}
+
+<div class="col-9">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Thông tin tài khoản</h4>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="post" asp-action="UpdateUser" asp-controller="ManagerAccount" asp-route-returnUrl="@ViewData[" ReturnUrl"]">
+                        <div class="form-group row">
+                            <label for="username" class="col-4 col-form-label">Họ đệm</label>
+                            <div class="col-8">
+                                <input value="@userInfor.LastName" asp-for="LastName" placeholder="Họ đệm" class="form-control here" required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="name" class="col-4 col-form-label">Tên</label>
+                            <div class="col-8">
+                                <input value="@userInfor.FirstName" asp-for="FirstName" placeholder="Tên" class="form-control here" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lastname" class="col-4 col-form-label">Số điện thoại</label>
+                            <div class="col-8">
+                                <input value="@uservm.PhoneNumber" asp-for="PhoneNumber" placeholder="Số điện thại" class="form-control here" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="text" class="col-4 col-form-label">Email</label>
+                            <div class="col-8">
+                                <input value="@uservm.Email" asp-for="Email" placeholder="Email" class="form-control here" required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-4 col-form-label">Giới tính</label>
+                            <div class="col-8">
+                                <div class="row">
+                                    @if (userInfor.Gender == 2)
+                                    {
+                                        bool male = false;
+                                        var female = true;
+                                        <div class="col-6">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" value="@male" id="Male" name="Gender">
+                                                <label class="custom-control-label" for="Male">Nam</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" value="@female" id="Female" name="Gender">
+                                                <label class="custom-control-label" for="Female">Nữ</label>
+                                            </div>
+                                        </div>
+                                    }
+                                    else if (userInfor.Gender == 1)
+                                    {
+                                        bool male = true;
+                                        bool female = false;
+                                        <div class="col-6">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" value="@male" id="Male" name="Gender">
+                                                <label class="custom-control-label" for="Male">Nam</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" value="@female" id="Female" name="Gender">
+                                                <label class="custom-control-label" for="Female">Nữ</label>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        bool male = false;
+                                        bool female = false;
+                                        <div class="col-6">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" value="@male" id="Male" name="Gender">
+                                                <label class="custom-control-label" for="Male">Nam</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" value="@female" id="Female" name="Gender">
+                                                <label class="custom-control-label" for="Female">Nữ</label>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="website" class="col-4 col-form-label">Ngày sinh</label>
+                            <div class="col-8">
+                                <input value="@userInfor.BirthDay" placeholder="Ngày sinh" class="form-control here" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="offset-4 col-8">
+                                <button name="submit" type="submit" class="btn btn-primary">Cập nhật</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

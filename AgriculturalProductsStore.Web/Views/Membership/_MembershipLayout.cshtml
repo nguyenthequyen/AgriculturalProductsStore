@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agriculture Store - @ViewData["Title"]</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    </environment>
+    <link href="~/lib/sweetAlert/sweetalert.css" rel="stylesheet" />
+    <script src="~/lib/sweetAlert/sweetalert.min.js"></script>
+    @RenderSection("Styles", false)
+</head>
+<body>
+    @if (TempData["notification"] != null)
+    {
+        @Html.Raw(TempData["notification"])
+    }
+    @await Html.PartialAsync("~/Views/Membership/_NavAccountPartial.cshtml")
+    <div class="container-fluid pt-2">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="list-group ">
+                            <a asp-action="Index" asp-controller="ManagerAccount" class="list-group-item list-group-item-action active">Thông tin tài khoản</a>
+                            <a asp-action="UpdatePassword" asp-controller="ManagerAccount" class="list-group-item list-group-item-action">Mật khẩu</a>
+                            <a href="#" class="list-group-item list-group-item-action">Used</a>
+                            <a href="#" class="list-group-item list-group-item-action">Enquiry</a>
+                            <a href="#" class="list-group-item list-group-item-action">Dealer</a>
+                            <a href="#" class="list-group-item list-group-item-action">Media</a>
+                            <a href="#" class="list-group-item list-group-item-action">Post</a>
+                            <a href="#" class="list-group-item list-group-item-action">Category</a>
+                            <a href="#" class="list-group-item list-group-item-action">New</a>
+                            <a href="#" class="list-group-item list-group-item-action">Comments</a>
+                            <a href="#" class="list-group-item list-group-item-action">Appearance</a>
+                            <a href="#" class="list-group-item list-group-item-action">Reports</a>
+                            <a href="#" class="list-group-item list-group-item-action">Settings</a>
+                        </div>
+                    </div>
+                    @RenderBody()
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="~/lib/sweetAlert/sweetalert-dev.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

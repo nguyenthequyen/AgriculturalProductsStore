@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AgriculturalProductsStore.Web
 {
-    public class Strings
+    public class StringHelpers
     {
         public static string RemoveAllNonPrintableCharacters(string target)
         {

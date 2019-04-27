@@ -7,6 +7,6 @@ namespace AgriculturalProductsStore.Models.Entity
 {
     public class ApplicationRoleClaim : IdentityRoleClaim<string>
     {
-        public virtual ApplicationRole Role { get; set; }
+        public virtual ApplicationRole ApplicationRole { get; set; }
     }
 }
