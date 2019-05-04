@@ -33,7 +33,7 @@ namespace AgriculturalProductsStore.Services.BaseServices
             return _reponsitory.GetAllRecords();
         }
 
-        public async Task<TEntity> GetFirstOrDefault(Guid id)
+        public async Task<TEntity> GetFirstOrDefault(string id)
         {
             return await _reponsitory.GetFirstOrDefault(id);
         }

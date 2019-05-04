@@ -28,9 +28,9 @@ namespace AgriculturalProductsStore.Repository.BaseRepository
             return _dbContext.Set<TEntity>();
         }
 
-        public virtual async Task<TEntity> GetFirstOrDefault(Guid recordId)
+        public virtual async Task<TEntity> GetFirstOrDefault(string id)
         {
-            return await _dbContext.Set<TEntity>().FindAsync(recordId);
+            return await _dbContext.Set<TEntity>().FindAsync(id);
         }
 
         public virtual void Save()

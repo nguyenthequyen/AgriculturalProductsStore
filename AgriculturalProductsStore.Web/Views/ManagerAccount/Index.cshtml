@@ -1,14 +1,13 @@
 ﻿@using AgriculturalProductsStore.Web.ViewModels.ManagerAccount
-@model AgriculturalProductsStore.Web.ViewModels.ManagerAccount.UpdateUserViewModel
-@{
-    var userInfor = ViewData["userInforViewModel"] as UserInforViewModel;
-    var uservm = ViewData["UserViewModel"] as UserViewModel;
-}
+@model UserViewModel
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Membership/_MembershipLayout.cshtml";
 }
-
+@section Styles{
+    <link href="~/lib/bootstrap/dist/js/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+}
 <div class="col-9">
     <div class="card">
         <div class="card-body">
@@ -20,93 +19,81 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <form method="post" asp-action="UpdateUser" asp-controller="ManagerAccount" asp-route-returnUrl="@ViewData[" ReturnUrl"]">
+                    <div class="form-group row">
+                        <label for="username" class="col-4 col-form-label"></label>
+                        <div class="col-8">
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <form method="post" asp-action="Index" asp-controller="ManagerAccount" asp-route-returnUrl="@ViewData["ReturnUrl"]">
                         <div class="form-group row">
                             <label for="username" class="col-4 col-form-label">Họ đệm</label>
                             <div class="col-8">
-                                <input value="@userInfor.LastName" asp-for="LastName" placeholder="Họ đệm" class="form-control here" required="required" type="text">
+                                <input asp-for="LastName" placeholder="Họ đệm" class="form-control here" required="required" type="text">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="name" class="col-4 col-form-label">Tên</label>
                             <div class="col-8">
-                                <input value="@userInfor.FirstName" asp-for="FirstName" placeholder="Tên" class="form-control here" type="text">
+                                <input asp-for="FirstName" placeholder="Tên" class="form-control here" type="text">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="lastname" class="col-4 col-form-label">Số điện thoại</label>
                             <div class="col-8">
-                                <input value="@uservm.PhoneNumber" asp-for="PhoneNumber" placeholder="Số điện thại" class="form-control here" type="text">
+                                <input asp-for="PhoneNumber" placeholder="Số điện thại" class="form-control here" type="text">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="text" class="col-4 col-form-label">Email</label>
                             <div class="col-8">
-                                <input value="@uservm.Email" asp-for="Email" placeholder="Email" class="form-control here" required="required" type="text">
+                                <input asp-for="Email" placeholder="Email" class="form-control here" required="required" type="text">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="email" class="col-4 col-form-label">Giới tính</label>
                             <div class="col-8">
-                                <div class="row">
-                                    @if (userInfor.Gender == 2)
+                                @if (Model.Gender == 1)
+                                {
+                                    var male = true;
+                                    var female = false;
+                                    @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>
                                     {
-                                        bool male = false;
-                                        var female = true;
-                                        <div class="col-6">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" value="@male" id="Male" name="Gender">
-                                                <label class="custom-control-label" for="Male">Nam</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" value="@female" id="Female" name="Gender">
-                                                <label class="custom-control-label" for="Female">Nữ</label>
-                                            </div>
-                                        </div>
-                                    }
-                                    else if (userInfor.Gender == 1)
+                                    new SelectListItem{Text="Nam", Value="1", Selected=male},
+                                    new SelectListItem{Text="Nữ", Value="2",Selected=female}},
+                                    "Chọn giới tính",
+                                    new { @class = "form-control" })
+                                }
+                                else if (Model.Gender == 2)
+                                {
+                                    var male = false;
+                                    var female = true;
+                                    @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>
                                     {
-                                        bool male = true;
-                                        bool female = false;
-                                        <div class="col-6">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" value="@male" id="Male" name="Gender">
-                                                <label class="custom-control-label" for="Male">Nam</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" value="@female" id="Female" name="Gender">
-                                                <label class="custom-control-label" for="Female">Nữ</label>
-                                            </div>
-                                        </div>
-                                    }
-                                    else
+                                    new SelectListItem{Text="Nam", Value="1", Selected=male},
+                                    new SelectListItem{Text="Nữ", Value="2",Selected=female}},
+                                    "Chọn giới tính",
+                                    new { @class = "form-control" })
+                                }
+                                else
+                                {
+                                    var male = false;
+                                    var female = false;
+                                    @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>
                                     {
-                                        bool male = false;
-                                        bool female = false;
-                                        <div class="col-6">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" value="@male" id="Male" name="Gender">
-                                                <label class="custom-control-label" for="Male">Nam</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" value="@female" id="Female" name="Gender">
-                                                <label class="custom-control-label" for="Female">Nữ</label>
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
+                                    new SelectListItem{Text="Nam", Value="1", Selected=male},
+                                    new SelectListItem{Text="Nữ", Value="2",Selected=female}},
+                                    "Chọn giới tính",
+                                    new { @class = "form-control" })
+                                }
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="website" class="col-4 col-form-label">Ngày sinh</label>
                             <div class="col-8">
-                                <input value="@userInfor.BirthDay" placeholder="Ngày sinh" class="form-control here" type="text">
+                                <div id="datetimepicker" class="input-append">
+                                    <input class="form-control text-dark-admin-15px" asp-for="BirthDay" placeholder="Ngày/Tháng/Năm" type="text" data-val="true">
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -121,3 +108,23 @@
         </div>
     </div>
 </div>
+@section Scripts{
+    <script src="~/lib/bootstrap/dist/js/moment.vi.js"></script>
+    <script type="text/javascript">
+        var date = new Date();
+        var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        $('#datetimepicker input').datetimepicker({
+            format: "DD/MM/YYYY",
+            showTodayButton: true,
+            showClear: true,
+            locale: moment.locale("vi"),
+            tooltips: {
+                today: 'Hôm nay',
+                clear: 'Xóa'
+            }
+        });
+        $('#calendar-addon').click(function () {
+            $("#datetimepicker input").focus();
+        });
+    </script>
+}

@@ -1,7 +1,11 @@
 ﻿using AgriculturalProductsStore.Models.Entity;
 using AgriculturalProductsStore.Repository;
 using AgriculturalProductsStore.Repository.UnitOfWork;
+using AgriculturalProductsStore.Services;
 using AgriculturalProductsStore.Services.EmailSender;
+using AgriculturalProductsStore.Web.ViewModels.ManagerAccount;
+using AutoMapper;
+using AutoMapper.EquivalencyExpression;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -20,8 +24,7 @@ namespace AgriculturalProductsStore.Web.Helpers
         public static void RegisterDatabase(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationIdentityDbContext>(options =>
-                options.UseSqlServer(
-                    configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, ApplicationRole>()
             .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
@@ -34,12 +37,26 @@ namespace AgriculturalProductsStore.Web.Helpers
             //
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IUserInforService, UserInforService>();
+            services.AddTransient<IUserAddressService, UserAddressService>();
         }
 
         public static void RegisterRepository(this IServiceCollection services)
         {
             //UnitOfWork
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUserInforRepository, UserInforRepository>();
+            services.AddTransient<IUserAddressRepository, UserAddressRepository>();
+        }
+        public static void RegisterMapper(this IServiceCollection services)
+        {
+            services.AddAutoMapper();
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AllowNullCollections = true;
+                cfg.CreateMap<UserAddress, UserAddressViewModel>();
+                cfg.CreateMap<UserAddressViewModel, UserAddress>();
+            });
         }
 
     }

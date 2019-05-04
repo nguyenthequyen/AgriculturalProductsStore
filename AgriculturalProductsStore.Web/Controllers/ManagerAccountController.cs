@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using AgriculturalProductsStore.Models.Constants;
 using AgriculturalProductsStore.Models.Entity;
 using AgriculturalProductsStore.Repository;
+using AgriculturalProductsStore.Services;
 using AgriculturalProductsStore.Web.ViewModels.ManagerAccount;
+using AutoMapper;
+using AutoMapper.EquivalencyExpression;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using static AgriculturalProductsStore.Models.Enum.Enum;
 
 namespace AgriculturalProductsStore.Web.Controllers
@@ -19,23 +25,36 @@ namespace AgriculturalProductsStore.Web.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ApplicationIdentityDbContext _dbContext;
+        private readonly IUserInforService _userInforService;
+        private readonly IUserAddressService _userAddressService;
+        private readonly ILogger<ManagerAccountController> _logger;
+        private readonly IMapper _mapper;
 
         public ManagerAccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ApplicationIdentityDbContext dbContext
-            )
+            ApplicationIdentityDbContext dbContext,
+            IUserInforService userInforService,
+            IUserAddressService userAddressService,
+            ILogger<ManagerAccountController> logger,
+            IMapper mapper
+            ) : base(logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _dbContext = dbContext;
+            _userInforService = userInforService;
+            _userAddressService = userAddressService;
+            _logger = logger;
+            _mapper = mapper;
         }
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             var user = await _userManager.GetUserAsync(HttpContext.User);
             if (user == null)
             {
@@ -49,11 +68,7 @@ namespace AgriculturalProductsStore.Web.Controllers
                 userViewModel = new UserViewModel
                 {
                     Email = uservm.Email,
-                    PhoneNumber = uservm.PhoneNumber
-                };
-                var userInforViewModel = new UserInforViewModel();
-                userInforViewModel = new UserInforViewModel
-                {
+                    PhoneNumber = uservm.PhoneNumber,
                     BirthDay = userInfor.Birthday?.ToString(),
                     LastName = userInfor.LastName,
                     FirstName = userInfor.FirstName,
@@ -61,15 +76,67 @@ namespace AgriculturalProductsStore.Web.Controllers
                 };
 
                 ViewData["UserViewModel"] = userViewModel;
-                ViewData["userInforViewModel"] = userInforViewModel;
-                return View();
+                return View(userViewModel);
             }
         }
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> UpdateUser(UpdateUserViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Index(UserViewModel model, string returnUrl = null)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var userContext = await _userManager.GetUserAsync(HttpContext.User);
+                if (userContext == null)
+                {
+                    Alert("Không tìm thấy thông tin tài khoản", NotificationType.error);
+                    return View(model);
+                }
+                else
+                {
+                    ApplicationUser user = null;
+                    Regex regexEmail = new Regex(RegexConstants.RegexEmail);
+                    Regex regexPhone = new Regex(RegexConstants.RegexPhoneNumber);
+                    Match matchEmail = regexEmail.Match(model.Email);
+                    Match matchPhone = regexPhone.Match(model.PhoneNumber);
+                    if (matchEmail.Success && matchPhone.Success)
+                    {
+                        user = await _userManager.FindByNameAsync(userContext.UserName);
+                        var userInfor = await _userInforService.FindUserInforByUserId(user.Id);
+                        if (user != null)
+                        {
+                            if (userInfor != null)
+                            {
+                                user.Email = model.Email;
+                                user.PhoneNumber = model.PhoneNumber;
+                                userInfor.LastName = model.LastName;
+                                userInfor.FirstName = model.FirstName;
+                                userInfor.Birthday = model.BirthDay;
+                                userInfor.Gender = model.Gender;
+                                await _userManager.UpdateAsync(user);
+                                _userInforService.UpdateUserInfor(userInfor);
+                                Alert("Thay đổi thông tin tài khoản thành công", NotificationType.success);
+                                return View(model);
+                            }
+                            else
+                            {
+                                Alert("Không tìm thấy thông tin tài khoản", NotificationType.error);
+                                return View(model);
+                            }
+                        }
+                        else
+                        {
+                            Alert("Không tìm thấy thông tin tài khoản", NotificationType.error);
+                            return View(model);
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Email hoặc số điện thoại không đúng định dạng");
+                        return View(model);
+                    }
+                }
+            }
+            return View(model);
         }
         [Authorize]
         [HttpGet]
@@ -106,6 +173,184 @@ namespace AgriculturalProductsStore.Web.Controllers
                 }
             }
             Alert("Đổi mật khẩu thất bại", NotificationType.error);
+            return View(model);
+        }
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> ManageAddress(string returnUrl = null)
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            if (user != null)
+            {
+                try
+                {
+                    var userAddress = _userAddressService.FindUserAddressByUserId(user.Id);
+                    if (userAddress.Count == 0)
+                    {
+                        Alert("Không có thông tin sổ địa chỉ", NotificationType.warning);
+                        return View();
+                    }
+                    else
+                    {
+                        var destinations = Mapper.Map<List<UserAddress>, List<UserAddressViewModel>>(userAddress);
+                        return View(destinations);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError("Lỗi lấy thông tin sổ địa chỉ: " + ex);
+                    Alert("Không có thông tin sổ địa chỉ", NotificationType.error);
+                    return View();
+                }
+            }
+            else
+            {
+                Alert("Không tìm thấy thông tin tài khoản", NotificationType.warning);
+                return View();
+            }
+        }
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> UpdateAddress(string id, string returnUrl = null)
+        {
+            if (!string.IsNullOrEmpty(id))
+            {
+                var userAddress = await _userAddressService.GetFirstOrDefault(id);
+                if (userAddress != null)
+                {
+                    var destinations = Mapper.Map<UserAddress, UserAddressViewModel>(userAddress);
+                    return View(destinations);
+                }
+                else
+                {
+                    Alert("Không tìm thấy thông tin địa chỉ", NotificationType.error);
+                    return RedirectToAction(nameof(ManageAddress), new { returnUrl = returnUrl });
+                }
+            }
+            else
+            {
+                Alert("Không tìm thấy thông tin địa chỉ", NotificationType.error);
+                return RedirectToAction(nameof(ManageAddress), new { returnUrl = returnUrl });
+            }
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> UpdateAddress(UserAddressViewModel model, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+                if (user != null)
+                {
+                    var destinations = Mapper.Map<UserAddressViewModel, UserAddress>(model);
+                    destinations.IdentityUserId = user.Id;
+                    try
+                    {
+                        _userAddressService.UpdateUserAddress(destinations);
+                        Alert("Cập nhật địa chỉ thành công", NotificationType.success);
+                        return RedirectToAction(nameof(ManageAddress), new { returnUrl = returnUrl });
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError("Lỗi cập nhật địa chỉ: " + ex);
+                        Alert("Lỗi cập nhật địa chỉ", NotificationType.error);
+                        return View();
+                    }
+                }
+                else
+                {
+                    Alert("Không tìm thấy thông tin cá nhân", NotificationType.error);
+                    return View();
+                }
+            }
+            return View(model);
+        }
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> DeleteAddress(string id = null, string returnUrl = null)
+        {
+            if (!string.IsNullOrEmpty(id))
+            {
+                var userAddress = await _userAddressService.GetFirstOrDefault(id);
+                if (userAddress != null)
+                {
+                    _userAddressService.DeleteUserAddress(userAddress);
+                    Alert("Xóa địa chỉ thành công", NotificationType.success);
+                    return RedirectToAction(nameof(ManageAddress), new { returnUrl = returnUrl });
+                }
+                else
+                {
+                    Alert("Không tìm thấy thông tin địa chỉ", NotificationType.error);
+                    return RedirectToAction(nameof(ManageAddress), new { returnUrl = returnUrl });
+                }
+            }
+            else
+            {
+                Alert("Không tìm thấy thông tin địa chỉ", NotificationType.error);
+                return RedirectToAction(nameof(ManageAddress), new { returnUrl = returnUrl });
+            };
+        }
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> AddAddress(string returnUrl = null)
+        {
+
+            return View();
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddAddress(UserAddressViewModel model, string returnUrl = null)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+                if (user != null)
+                {
+                    Regex regexPhone = new Regex(RegexConstants.RegexPhoneNumber);
+                    Match matchPhone = regexPhone.Match(model.PhoneNumber);
+                    if (matchPhone.Success)
+                    {
+                        try
+                        {
+                            if (model.IsDefault == true)
+                            {
+                                _userAddressService.UpdateNotDefaultAddress(false, user.Id);
+                            }
+                            var userAddress = new UserAddress();
+                            userAddress = new UserAddress
+                            {
+                                FullName = model.FullName,
+                                District = model.District,
+                                Company = model.Company,
+                                IsDefault = model.IsDefault,
+                                PhoneNumber = model.PhoneNumber,
+                                ProvinceCity = model.ProvinceCity,
+                                Address = model.Address,
+                                AddressType = model.AddressType,
+                                Ward = model.Ward,
+                                IdentityUserId = user.Id
+                            };
+                            _userAddressService.AddUserAddress(userAddress);
+                            return RedirectToAction(nameof(ManageAddress), new { returnUrl = returnUrl });
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError("Lỗi update sổ địa chỉ: " + ex);
+                            Alert("Thêm sổ địa chỉ thất bại", NotificationType.error);
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("PhoneNumber", "Số điện thoại không đúng định dạng");
+
+                    }
+                }
+                else
+                {
+                    Alert("Lỗi không tìm thấy thông tin tài khoản", NotificationType.error);
+                    return View(model);
+                }
+            }
             return View(model);
         }
         #region private

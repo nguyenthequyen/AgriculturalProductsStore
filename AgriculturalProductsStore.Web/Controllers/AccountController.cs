@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 using AgriculturalProductsStore.Models.Constants;
 using AgriculturalProductsStore.Models.Entity;
 using AgriculturalProductsStore.Repository;
+using AgriculturalProductsStore.Services;
 using AgriculturalProductsStore.Web.ViewModels.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace AgriculturalProductsStore.Web.Controllers
 {
@@ -21,17 +23,23 @@ namespace AgriculturalProductsStore.Web.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationIdentityDbContext _dbContext;
         private readonly IEmailSender _emailSender;
+        private readonly IUserInforService _userInforService;
+        private readonly ILogger<AccountController> _logger;
         public AccountController(
             SignInManager<ApplicationUser> signInManager,
             UserManager<ApplicationUser> userManager,
             ApplicationIdentityDbContext dbContext,
-            IEmailSender emailSender
-            )
+            IEmailSender emailSender,
+            IUserInforService userInforService,
+            ILogger<AccountController> logger
+            ) : base(logger)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _dbContext = dbContext;
             _emailSender = emailSender;
+            _userInforService = userInforService;
+            _logger = logger;
         }
         [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
@@ -153,8 +161,7 @@ namespace AgriculturalProductsStore.Web.Controllers
                                 LastName = model.LastName,
                                 IdentityUserId = user.Id
                             };
-                            _dbContext.UserInfors.Add(userInfor);
-                            _dbContext.SaveChanges();
+                            _userInforService.AddUserInfor(userInfor);
                             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                             var callbackUrl = Url.Action(
                                 "ConfirmEmail",
@@ -195,8 +202,7 @@ namespace AgriculturalProductsStore.Web.Controllers
                                 LastName = model.LastName,
                                 IdentityUserId = user.Id,
                             };
-                            _dbContext.UserInfors.Add(userInfor);
-                            _dbContext.SaveChanges();
+                            _userInforService.AddUserInfor(userInfor);
                         }
                     }
                 }

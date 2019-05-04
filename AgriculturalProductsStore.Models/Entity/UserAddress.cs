@@ -14,6 +14,8 @@ namespace AgriculturalProductsStore.Models.Entity
         public string District { get; set; }
         public string Ward { get; set; }
         public string Address { get; set; }
+        public int? AddressType { get; set; }
+        public bool IsDefault { get; set; }
         public string IdentityUserId { get; set; }
         public ApplicationUser IdentityUser { get; set; }
     }

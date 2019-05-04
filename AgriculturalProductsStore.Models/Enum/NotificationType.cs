@@ -13,6 +13,5 @@ namespace AgriculturalProductsStore.Models.Enum
             warning,
             info
         }
-
     }
 }
