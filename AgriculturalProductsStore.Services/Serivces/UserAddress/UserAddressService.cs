@@ -29,6 +29,7 @@ namespace AgriculturalProductsStore.Services
         public void DeleteUserAddress(UserAddress userAddress)
         {
             Delete(userAddress);
+            _unitOfWork.Commit();
         }
 
         public async Task<UserAddress> FindUserAddressById(string id)

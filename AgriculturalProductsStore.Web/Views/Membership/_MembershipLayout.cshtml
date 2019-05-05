@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link href="~/lib/font/font-awesome.min.css" rel="stylesheet" />
         <link href="~/lib/bootstrap/dist/js/bootstrap-datetimepicker.css" rel="stylesheet" />
+        <link href="~/css/common.css" rel="stylesheet" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -39,7 +40,9 @@
                             <a asp-action="Index" asp-controller="ManagerAccount" class="list-group-item list-group-item-action active">Thông tin tài khoản</a>
                             <a asp-action="UpdatePassword" asp-controller="ManagerAccount" class="list-group-item list-group-item-action">Mật khẩu</a>
                             <a asp-action="ManageAddress" asp-controller="ManagerAccount" class="list-group-item list-group-item-action">Số địa chỉ</a>
-                            <a href="#" class="list-group-item list-group-item-action">Enquiry</a>
+                            <a asp-action="ManagerOrder" asp-controller="ManagerAccount" class="list-group-item list-group-item-action">Quản lý đơn hàng</a>
+                            <a asp-action="ManagerPay" asp-controller="ManagerAccount" class="list-group-item list-group-item-action">Thông tin thanh toán</a>
+                            <a asp-action="ProductsPurchasedLater" asp-controller="ManagerAccount" class="list-group-item list-group-item-action">Sản phẩm mua sau</a>
                             <a href="#" class="list-group-item list-group-item-action">Dealer</a>
                             <a href="#" class="list-group-item list-group-item-action">Media</a>
                             <a href="#" class="list-group-item list-group-item-action">Post</a>
@@ -63,6 +66,7 @@
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="~/lib/sweetAlert/sweetalert-dev.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="~/js/common.js"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"

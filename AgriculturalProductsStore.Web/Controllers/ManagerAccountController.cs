@@ -265,10 +265,11 @@ namespace AgriculturalProductsStore.Web.Controllers
             }
             return View(model);
         }
-        [HttpGet]
+        [HttpPost]
         [Authorize]
-        public async Task<IActionResult> DeleteAddress(string id = null, string returnUrl = null)
+        public async Task<IActionResult> DeleteAddress(UserAddressId user, string returnUrl = null)
         {
+            string id = user.Id;
             if (!string.IsNullOrEmpty(id))
             {
                 var userAddress = await _userAddressService.GetFirstOrDefault(id);

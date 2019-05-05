@@ -1,0 +1,7 @@
+﻿body {
+}
+
+.cursor-pointer {
+    cursor: pointer;
+    color: red !important;
+}
