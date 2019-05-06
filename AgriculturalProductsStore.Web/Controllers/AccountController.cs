@@ -41,12 +41,26 @@ namespace AgriculturalProductsStore.Web.Controllers
             _userInforService = userInforService;
             _logger = logger;
         }
+        /// <summary>
+        /// Màn hỉnh đăng nhập
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
+        [HttpGet]
         [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
+        /// <summary>
+        /// Xử lý đăng nhập
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
@@ -119,6 +133,12 @@ namespace AgriculturalProductsStore.Web.Controllers
             }
             return View(model);
         }
+        /// <summary>
+        /// Màn hình đăng ký
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
@@ -126,6 +146,13 @@ namespace AgriculturalProductsStore.Web.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
+        /// <summary>
+        /// Xử lý đăng ký
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
@@ -214,12 +241,24 @@ namespace AgriculturalProductsStore.Web.Controllers
             }
             return View(model);
         }
+        /// <summary>
+        /// Màn hình quên mật khẩu
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ResetPassword(string returnUrl)
         {
             return View();
         }
+        /// <summary>
+        /// Màn hình tài khoản bị khóa
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Lockout(string returnUrl)
@@ -227,7 +266,14 @@ namespace AgriculturalProductsStore.Web.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
-
+        /// <summary>
+        /// Màn hình xác nhận email
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="code"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmEmail(string userId, string code, string returnUrl = null)

@@ -16,6 +16,12 @@ namespace AgriculturalProductsStore.Web.Controllers
         {
             _logger = logger;
         }
+        /// <summary>
+        /// Thông báo
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="notificationType"></param>
+        /// Created by: NTQuyen 06/05/2019
         public void Alert(string message, NotificationType notificationType)
         {
             var msg = "<script language='javascript'>swal('" + notificationType.ToString().ToUpper() + "', '" + message + "','" + notificationType + "')" + "</script>";

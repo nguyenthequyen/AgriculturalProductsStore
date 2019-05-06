@@ -66,5 +66,9 @@ namespace AgriculturalProductsStore.Repository
 
         public DbSet<UserInfor> UserInfors { get; set; }
         public DbSet<UserAddress> UserAddresses { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<CategoryChidren> CategoryChidrens { get; set; }
+        public DbSet<Unit> Units { get; set; }
     }
 }

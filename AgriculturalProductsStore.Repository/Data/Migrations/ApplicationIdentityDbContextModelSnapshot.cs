@@ -180,6 +180,98 @@ namespace AgriculturalProductsStore.Repository.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("AgriculturalProductsStore.Models.Entity.Category", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<DateTime>("ModifyDate");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("AgriculturalProductsStore.Models.Entity.CategoryChidren", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CategoryId");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<DateTime>("ModifyDate");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("CategoryChidrens");
+                });
+
+            modelBuilder.Entity("AgriculturalProductsStore.Models.Entity.Product", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Amount");
+
+                    b.Property<string>("CategoryId");
+
+                    b.Property<string>("Code");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("FullDescription");
+
+                    b.Property<DateTime>("ModifyDate");
+
+                    b.Property<string>("Name");
+
+                    b.Property<DateTime>("OpenDaySale");
+
+                    b.Property<decimal>("Price");
+
+                    b.Property<string>("ShortDescription");
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("UnitId");
+
+                    b.Property<int>("View");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("UnitId");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("AgriculturalProductsStore.Models.Entity.Unit", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<DateTime>("ModifyDate");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Units");
+                });
+
             modelBuilder.Entity("AgriculturalProductsStore.Models.Entity.UserAddress", b =>
                 {
                     b.Property<string>("Id")
@@ -285,6 +377,24 @@ namespace AgriculturalProductsStore.Repository.Data.Migrations
                         .WithMany("ApplicationUserTokens")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("AgriculturalProductsStore.Models.Entity.CategoryChidren", b =>
+                {
+                    b.HasOne("AgriculturalProductsStore.Models.Entity.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+                });
+
+            modelBuilder.Entity("AgriculturalProductsStore.Models.Entity.Product", b =>
+                {
+                    b.HasOne("AgriculturalProductsStore.Models.Entity.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("AgriculturalProductsStore.Models.Entity.Unit", "Unit")
+                        .WithMany()
+                        .HasForeignKey("UnitId");
                 });
 
             modelBuilder.Entity("AgriculturalProductsStore.Models.Entity.UserAddress", b =>
