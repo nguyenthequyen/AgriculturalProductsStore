@@ -1,12 +1,12 @@
 ﻿@using AgriculturalProductsStore.Web.ViewModels.ManagerAccount
 @model AgriculturalProductsStore.Web.ViewModels.ManagerAccount.UserAddressViewModel
+@using AgriculturalProductsStore.Web.Configuration
 
 @{
     ViewData["Title"] = "Cập nhật địa chỉ";
     Layout = "~/Views/Membership/_MembershipLayout.cshtml";
+    ViewData["ActivePage"] = ActivePage.ManagerAddress;
 }
-
-
 <div class="col-9">
     <div class="card">
         <div class="card-body">
@@ -69,33 +69,33 @@
                                     var home = true;
                                     var company = false;
                                     @Html.DropDownListFor(m => m.AddressType, new List<SelectListItem>
-                                    {
-                                    new SelectListItem{Text="Nhà riêng/Chung cư", Value="1", Selected=home},
-                                    new SelectListItem{Text="Cơ quan/Công ty", Value="2",Selected=company}},
-                                    "Chọn loại địa chỉ",
-                                    new { @class = "form-control" })
+                                        {
+                                        new SelectListItem{Text="Nhà riêng/Chung cư", Value="1", Selected=home},
+                                        new SelectListItem{Text="Cơ quan/Công ty", Value="2",Selected=company}},
+                                        "Chọn loại địa chỉ",
+                                        new { @class = "form-control" })
                                 }
                                 else if (Model.AddressType == 2)
                                 {
                                     var home = false;
                                     var company = true;
                                     @Html.DropDownListFor(m => m.AddressType, new List<SelectListItem>
-                                    {
-                                    new SelectListItem{Text="Nhà riêng/Chung cư", Value="1", Selected=home},
-                                    new SelectListItem{Text="Cơ quan/Công ty", Value="2",Selected=company}},
-                                    "Chọn loại địa chỉ",
-                                    new { @class = "form-control" })
+                                        {
+                                        new SelectListItem{Text="Nhà riêng/Chung cư", Value="1", Selected=home},
+                                        new SelectListItem{Text="Cơ quan/Công ty", Value="2",Selected=company}},
+                                        "Chọn loại địa chỉ",
+                                        new { @class = "form-control" })
                                 }
                                 else
                                 {
                                     var home = false;
                                     var company = false;
                                     @Html.DropDownListFor(m => m.AddressType, new List<SelectListItem>
-                                    {
-                                    new SelectListItem{Text="Nhà riêng/Chung cư", Value="1", Selected=home},
-                                    new SelectListItem{Text="Cơ quan/Công ty", Value="2",Selected=company}},
-                                    "Chọn loại địa chỉ",
-                                    new { @class = "form-control" })
+                                        {
+                                        new SelectListItem{Text="Nhà riêng/Chung cư", Value="1", Selected=home},
+                                        new SelectListItem{Text="Cơ quan/Công ty", Value="2",Selected=company}},
+                                        "Chọn loại địa chỉ",
+                                        new { @class = "form-control" })
                                 }
                             </div>
                         </div>
@@ -109,7 +109,7 @@
                                 <label for="email" class="col-4 col-form-label"></label>
                                 <div class="col-8">
                                     <div class="custom-control custom-checkbox mb-3">
-                                        @Html.CheckBox("IsDefault", new { @class = "custom-control-input" }) 
+                                        @Html.CheckBox("IsDefault", new { @class = "custom-control-input" })
                                         <label class="custom-control-label" asp-for="IsDefault">Chọn làm địa chỉ mặc định</label>
                                     </div>
                                 </div>
