@@ -1,0 +1,154 @@
+-- Merging decision tree log ---
+manifest
+ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:2:1-21:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\e9aa2a9ab7bcd7ed589f0dab727349f9\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\e8cc29e6f13091de1548aecb037e9756\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\4dfc37d25ed2e99e59c6a5116589131b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\62454a4722b477090657a1fafa330fd2\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\82a5fe2b33ac195de8c5d122487e5aac\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\f2a83264ac833010ef3ebc175fa7610f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\394b38687203d78c535261398be6cc86\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\1369702ca39f19837634b56d0ed7c272\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\7cd445064bccd5f95f7febf7045cde23\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\b81c906c2dc1c6ffb9f1c4ae0d337ed1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\c2da118e36f943b24f742cab48bf0ee0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\c2084aed21fab8c7f9cdd0a85e6ee8ce\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\27dd987dd24a976f307a8d8a2532cc4d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\d9f9a4662949e69ecb771cff264db119\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\1b4e822a778d55c79ad5cf0737245ee8\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\e5c0ff17577f90cce71d62f6acc8d945\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\c726a777bd3b2893461be85b7679777c\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\ddd9bab9d1c2bfed874f6b4c29289f6e\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\fc5b8f11d13caaaa1b37b3238938783c\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\68691267f76f4e75a2ffa301bea70319\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\8251465a800dd3955083c8300b203362\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\222443f02f85697b21553edff9734efc\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\2e2142d062c2eaba241cb28b827913d3\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\78804a722d8fcbb40f3c413533825881\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\37f66f2ba988b0d7f5b589fd638fdc77\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\0ae6664c6d1e9400ccf7cacb56db329c\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\69bea29080c98f9b53e4cde708a553be\AndroidManifest.xml:17:1-22:12
+INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:2:1-21:12
+	package
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:3:5-36
+		INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+		INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:2:1-21:12
+		INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:2:1-21:12
+		INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:2:11-69
+application
+ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:5:5-19:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\e8cc29e6f13091de1548aecb037e9756\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\e8cc29e6f13091de1548aecb037e9756\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\e5c0ff17577f90cce71d62f6acc8d945\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\e5c0ff17577f90cce71d62f6acc8d945\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\c726a777bd3b2893461be85b7679777c\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\c726a777bd3b2893461be85b7679777c\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\e5c0ff17577f90cce71d62f6acc8d945\AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:11:9-40
+activity#com.example.farmstore.MainActivity
+ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:12:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml:16:27-74
+uses-sdk
+INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\e9aa2a9ab7bcd7ed589f0dab727349f9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\e9aa2a9ab7bcd7ed589f0dab727349f9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\e8cc29e6f13091de1548aecb037e9756\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\e8cc29e6f13091de1548aecb037e9756\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\4dfc37d25ed2e99e59c6a5116589131b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\4dfc37d25ed2e99e59c6a5116589131b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\62454a4722b477090657a1fafa330fd2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\62454a4722b477090657a1fafa330fd2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\82a5fe2b33ac195de8c5d122487e5aac\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\82a5fe2b33ac195de8c5d122487e5aac\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\f2a83264ac833010ef3ebc175fa7610f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\f2a83264ac833010ef3ebc175fa7610f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\394b38687203d78c535261398be6cc86\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\394b38687203d78c535261398be6cc86\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\1369702ca39f19837634b56d0ed7c272\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\1369702ca39f19837634b56d0ed7c272\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\7cd445064bccd5f95f7febf7045cde23\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\7cd445064bccd5f95f7febf7045cde23\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\b81c906c2dc1c6ffb9f1c4ae0d337ed1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\b81c906c2dc1c6ffb9f1c4ae0d337ed1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\c2da118e36f943b24f742cab48bf0ee0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\c2da118e36f943b24f742cab48bf0ee0\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\c2084aed21fab8c7f9cdd0a85e6ee8ce\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\c2084aed21fab8c7f9cdd0a85e6ee8ce\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\27dd987dd24a976f307a8d8a2532cc4d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\27dd987dd24a976f307a8d8a2532cc4d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\d9f9a4662949e69ecb771cff264db119\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\d9f9a4662949e69ecb771cff264db119\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\1b4e822a778d55c79ad5cf0737245ee8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\1b4e822a778d55c79ad5cf0737245ee8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\e5c0ff17577f90cce71d62f6acc8d945\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\e5c0ff17577f90cce71d62f6acc8d945\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\c726a777bd3b2893461be85b7679777c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\c726a777bd3b2893461be85b7679777c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\ddd9bab9d1c2bfed874f6b4c29289f6e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\ddd9bab9d1c2bfed874f6b4c29289f6e\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\fc5b8f11d13caaaa1b37b3238938783c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\fc5b8f11d13caaaa1b37b3238938783c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\68691267f76f4e75a2ffa301bea70319\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\68691267f76f4e75a2ffa301bea70319\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\8251465a800dd3955083c8300b203362\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\8251465a800dd3955083c8300b203362\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\222443f02f85697b21553edff9734efc\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\222443f02f85697b21553edff9734efc\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\2e2142d062c2eaba241cb28b827913d3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\2e2142d062c2eaba241cb28b827913d3\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\78804a722d8fcbb40f3c413533825881\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\78804a722d8fcbb40f3c413533825881\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\37f66f2ba988b0d7f5b589fd638fdc77\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\37f66f2ba988b0d7f5b589fd638fdc77\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\0ae6664c6d1e9400ccf7cacb56db329c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\0ae6664c6d1e9400ccf7cacb56db329c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\69bea29080c98f9b53e4cde708a553be\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\thequ\.gradle\caches\transforms-2\files-2.1\69bea29080c98f9b53e4cde708a553be\AndroidManifest.xml:20:5-44
+INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+		INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+		ADDED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml
+		INJECTED from F:\Project\AgriculturalProductsStore\Android\app\src\main\AndroidManifest.xml

@@ -50,6 +50,12 @@ namespace AgriculturalProductsStore.Web.Controllers
             _logger = logger;
             _mapper = mapper;
         }
+        /// <summary>
+        /// Màn hình thông tin tài khoản
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> Index(string returnUrl = null)
@@ -79,6 +85,13 @@ namespace AgriculturalProductsStore.Web.Controllers
                 return View(userViewModel);
             }
         }
+        /// <summary>
+        /// Xứ lý sửa thông tin tài khoản
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Index(UserViewModel model, string returnUrl = null)
@@ -138,12 +151,25 @@ namespace AgriculturalProductsStore.Web.Controllers
             }
             return View(model);
         }
+        /// <summary>
+        /// Màn hình thay đổi mật khẩu
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> UpdatePassword(string returnUrl)
         {
             return View();
         }
+        /// <summary>
+        /// Xủ lý thay đổi mật khẩu
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> UpdatePassword(UpdatePasswordViewModel model, string returnUrl)
@@ -175,6 +201,12 @@ namespace AgriculturalProductsStore.Web.Controllers
             Alert("Đổi mật khẩu thất bại", NotificationType.error);
             return View(model);
         }
+        /// <summary>
+        /// Màn hình sổ địa chỉ
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> ManageAddress(string returnUrl = null)
@@ -208,6 +240,13 @@ namespace AgriculturalProductsStore.Web.Controllers
                 return View();
             }
         }
+        /// <summary>
+        /// Màn hình cập nhật địa chỉ giao hàng
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> UpdateAddress(string id, string returnUrl = null)
@@ -232,6 +271,13 @@ namespace AgriculturalProductsStore.Web.Controllers
                 return RedirectToAction(nameof(ManageAddress), new { returnUrl = returnUrl });
             }
         }
+        /// <summary>
+        /// Xử lý cập nhật địa chỉ giao hàng
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> UpdateAddress(UserAddressViewModel model, string returnUrl)
@@ -264,6 +310,13 @@ namespace AgriculturalProductsStore.Web.Controllers
             }
             return View(model);
         }
+        /// <summary>
+        /// Xử lý Xóa địa chỉ giao hàng
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> DeleteAddress(UserAddressId user, string returnUrl = null)
@@ -290,6 +343,12 @@ namespace AgriculturalProductsStore.Web.Controllers
                 return RedirectToAction(nameof(ManageAddress), new { returnUrl = returnUrl });
             };
         }
+        /// <summary>
+        /// Màn hình thêm địa chỉ giao hàng
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> AddAddress(string returnUrl = null)
@@ -297,6 +356,13 @@ namespace AgriculturalProductsStore.Web.Controllers
 
             return View();
         }
+        /// <summary>
+        /// Xử lý thêm địa chỉ giao hàng
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        /// Created by: NTQuyen 06/05/2019
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> AddAddress(UserAddressViewModel model, string returnUrl = null)

@@ -1,6 +1,11 @@
 
+<<<<<<< HEAD
+# Created by https://www.gitignore.io/api/csharp,android,visualstudio,androidstudio
+# Edit at https://www.gitignore.io/?templates=csharp,android,visualstudio,androidstudio
+=======
 # Created by https://www.gitignore.io/api/java,csharp,android,visualstudio,androidstudio
 # Edit at https://www.gitignore.io/?templates=java,csharp,android,visualstudio,androidstudio
+>>>>>>> 59f67585e077f1be0ca8240e788a9eeb0cc57668
 
 ### Android ###
 # Built application files
