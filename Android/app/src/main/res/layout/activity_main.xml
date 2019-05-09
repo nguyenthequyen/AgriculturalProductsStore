@@ -14,5 +14,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <com.highsoft.highcharts.Core.HIChartView
+        android:id="@+id/hc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="62dp"
+        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"</com.highsoft.highcharts.Core.HIChartView>
 </android.support.constraint.ConstraintLayout>

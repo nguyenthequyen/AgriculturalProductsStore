@@ -187,7 +187,6 @@ namespace AgriculturalProductsStore.Web.Controllers
                     var userAddress = _userAddressService.FindUserAddressByUserId(user.Id);
                     if (userAddress.Count == 0)
                     {
-                        Alert("Không có thông tin sổ địa chỉ", NotificationType.warning);
                         return View();
                     }
                     else

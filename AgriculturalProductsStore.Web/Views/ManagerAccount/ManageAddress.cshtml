@@ -1,12 +1,12 @@
 ﻿@using AgriculturalProductsStore.Web.ViewModels.ManagerAccount
+@using AgriculturalProductsStore.Web.Configuration
 @model List<UserAddressViewModel>
 
 @{
     ViewData["Title"] = "Sổ địa chỉ";
     Layout = "~/Views/Membership/_MembershipLayout.cshtml";
+    ViewData["ActivePage"] = ActivePage.ManagerAddress;
 }
-
-
 <div class="col-9">
     <div class="card">
         <div class="card-body">
@@ -30,35 +30,38 @@
                     <hr>
                     <h4>Danh sách địa chỉ</h4>
                     <hr>
-                    @foreach (var item in Model)
+                    @if (Model != null)
                     {
-                        <div class="container border mt-1">
-                            <div class="row">
-                                <div class="col-9">@item.FullName</div>
-                                <div class="col-3">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <a asp-route-id="@item.Id" asp-action="UpdateAddress" asp-controller="ManagerAccount" class="float-right">Chỉnh sửa</a>
-                                        </div>
-                                        <div class="col-6">
-                                            @if (!item.IsDefault)
-                                            {
-                                                <a class="btn-delete-address cursor-pointer" address-id="@item.Id" data-toggle="modal" data-target="#exampleModal">Xóa</a>
-                                            }
+                        @foreach (var item in Model)
+                        {
+                            <div class="container border mt-1">
+                                <div class="row">
+                                    <div class="col-9">@item.FullName</div>
+                                    <div class="col-3">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <a asp-route-id="@item.Id" asp-action="UpdateAddress" asp-controller="ManagerAccount" class="float-right">Chỉnh sửa</a>
+                                            </div>
+                                            <div class="col-6">
+                                                @if (!item.IsDefault)
+                                                {
+                                                    <a class="btn-delete-address cursor-pointer" address-id="@item.Id" data-toggle="modal" data-target="#exampleModal">Xóa</a>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="w-100"></div>
-                                <div class="col pt-1 pl-4">
-                                    <div class="row">
-                                        Địa chỉ: <label>@item.Address</label>
-                                    </div>
-                                    <div class="row">
-                                        Điện thoại: <label>@item.PhoneNumber</label>
+                                    <div class="w-100"></div>
+                                    <div class="col pt-1 pl-4">
+                                        <div class="row">
+                                            Địa chỉ: <label>@item.Address</label>
+                                        </div>
+                                        <div class="row">
+                                            Điện thoại: <label>@item.PhoneNumber</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     }
                 </div>
             </div>
@@ -73,8 +76,8 @@
             </div>
             <div class="modal-footer">
 
-                <form asp-action="DeleteAddress" asp-controller="ManagerAccount" method="post" id="" >
-                    <input type="text" name="Id" id="Id" value="" class="sumbit-delete" hidden/>
+                <form asp-action="DeleteAddress" asp-controller="ManagerAccount" method="post" id="">
+                    <input type="text" name="Id" id="Id" value="" class="sumbit-delete" hidden />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
                     <button type="submit" class="btn btn-primary">Đồng ý</button>
                 </form>
