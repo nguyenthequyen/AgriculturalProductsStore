@@ -30,34 +30,41 @@
     {
         @Html.Raw(TempData["notification"])
     }
-    <div class="container-fluid bg-primary">
-        <div class="container">
-            @await Html.PartialAsync("~/Views/Membership/_NavAccountPartial.cshtml")
+    <header>
+        <div class="container-fluid bg-light justify-content-center d-flex">
+            <img src="~/image/layout/slide-header.png" alt="Alternate Text" />
         </div>
-    </div>
-    <div class="container pt-2">
-        <div class="row">
-            <div class="col-3">
-                <div class="list-group ">
-                    <a asp-action="Index" asp-controller="ManagerAccount" class="list-group-item list-group-item-action @ActivePage.IndexNavClass(ViewContext)">Thông tin tài khoản</a>
-                    <a asp-action="UpdatePassword" asp-controller="ManagerAccount" class="list-group-item list-group-item-action @ActivePage.ChangePasswordNavClass(ViewContext)">Mật khẩu</a>
-                    <a asp-action="ManageAddress" asp-controller="ManagerAccount" class="list-group-item list-group-item-action @ActivePage.ManagerAddressClass(ViewContext)">Số địa chỉ</a>
-                    <a asp-action="ManagerOrder" asp-controller="ManagerAccount" class="list-group-item list-group-item-action @ActivePage.ManagerOrderClass(ViewContext)">Quản lý đơn hàng</a>
-                    <a asp-action="ManagerPay" asp-controller="ManagerAccount" class="list-group-item list-group-item-action @ActivePage.ManagerPayClass(ViewContext)">Thông tin thanh toán</a>
-                    <a asp-action="ProductsPurchasedLater" asp-controller="ManagerAccount" class="list-group-item list-group-item-action @ActivePage.ProductsPurchasedLaterClass(ViewContext)">Sản phẩm mua sau</a>
-                    <a href="#" class="list-group-item list-group-item-action">Dealer</a>
-                    <a href="#" class="list-group-item list-group-item-action">Media</a>
-                    <a href="#" class="list-group-item list-group-item-action">Post</a>
-                    <a href="#" class="list-group-item list-group-item-action">Category</a>
-                    <a href="#" class="list-group-item list-group-item-action">New</a>
-                    <a href="#" class="list-group-item list-group-item-action">Comments</a>
-                    <a href="#" class="list-group-item list-group-item-action">Appearance</a>
-                    <a href="#" class="list-group-item list-group-item-action">Reports</a>
-                    <a href="#" class="list-group-item list-group-item-action">Settings</a>
-                </div>
+        <div class="container-fluid bg-primary">
+            <div class="container">
+                @await Html.PartialAsync("~/Views/Membership/_NavAccountPartial.cshtml")
             </div>
-            @RenderBody()
         </div>
+    </header>
+    <div class="container pt-2">
+        <main role="main">
+            <div class="row">
+                <div class="col-3">
+                    <div class="list-group ">
+                        <a asp-action="Index" asp-controller="ManagerAccount" class="list-group-item list-group-item-action @ActivePage.IndexNavClass(ViewContext)">Thông tin tài khoản</a>
+                        <a asp-action="UpdatePassword" asp-controller="ManagerAccount" class="list-group-item list-group-item-action @ActivePage.ChangePasswordNavClass(ViewContext)">Mật khẩu</a>
+                        <a asp-action="ManageAddress" asp-controller="ManagerAccount" class="list-group-item list-group-item-action @ActivePage.ManagerAddressClass(ViewContext)">Số địa chỉ</a>
+                        <a asp-action="ManagerOrder" asp-controller="ManagerAccount" class="list-group-item list-group-item-action @ActivePage.ManagerOrderClass(ViewContext)">Quản lý đơn hàng</a>
+                        <a asp-action="ManagerPay" asp-controller="ManagerAccount" class="list-group-item list-group-item-action @ActivePage.ManagerPayClass(ViewContext)">Thông tin thanh toán</a>
+                        <a asp-action="ProductsPurchasedLater" asp-controller="ManagerAccount" class="list-group-item list-group-item-action @ActivePage.ProductsPurchasedLaterClass(ViewContext)">Sản phẩm mua sau</a>
+                        <a href="#" class="list-group-item list-group-item-action">Dealer</a>
+                        <a href="#" class="list-group-item list-group-item-action">Media</a>
+                        <a href="#" class="list-group-item list-group-item-action">Post</a>
+                        <a href="#" class="list-group-item list-group-item-action">Category</a>
+                        <a href="#" class="list-group-item list-group-item-action">New</a>
+                        <a href="#" class="list-group-item list-group-item-action">Comments</a>
+                        <a href="#" class="list-group-item list-group-item-action">Appearance</a>
+                        <a href="#" class="list-group-item list-group-item-action">Reports</a>
+                        <a href="#" class="list-group-item list-group-item-action">Settings</a>
+                    </div>
+                </div>
+                @RenderBody()
+            </div>
+        </main>
     </div>
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

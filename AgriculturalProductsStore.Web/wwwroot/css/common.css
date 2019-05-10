@@ -24,8 +24,14 @@ a {
     z-index: 99999;*/
 }
 
-.img-pr:hover {
+.img-pr {
+    width: 100%;
+    min-width: 64px;
+    min-height: 64px;
 }
+
+    .img-pr:hover {
+    }
 
 .vertical-menu {
     width: 200px;
@@ -47,3 +53,8 @@ a {
             background-color: #4CAF50;
             color: white;
         }
+
+.list-menu a:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
