@@ -18,7 +18,7 @@ namespace AgriculturalProductsStore.Repository
 
         public void AddUserInfor(UserInfor userInfor)
         {
-            Add(userInfor);
+            Insert(userInfor);
         }
 
         public void DeleteUserInfor(UserInfor userInfor)

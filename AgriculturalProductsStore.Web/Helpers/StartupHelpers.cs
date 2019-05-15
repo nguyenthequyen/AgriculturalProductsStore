@@ -34,20 +34,27 @@ namespace AgriculturalProductsStore.Web.Helpers
 
         public static void RegisterServices(this IServiceCollection services)
         {
-            //
+            //Services
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IUserInforService, UserInforService>();
             services.AddTransient<IUserAddressService, UserAddressService>();
+            services.AddTransient<IProductServices, ProductServices>();
+            services.AddTransient<ICategoryService, CategoryService>();
         }
 
         public static void RegisterRepository(this IServiceCollection services)
         {
             //UnitOfWork
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            //Repository
             services.AddTransient<IUserInforRepository, UserInforRepository>();
             services.AddTransient<IUserAddressRepository, UserAddressRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
         }
+
+        [Obsolete]
         public static void RegisterMapper(this IServiceCollection services)
         {
             services.AddAutoMapper();

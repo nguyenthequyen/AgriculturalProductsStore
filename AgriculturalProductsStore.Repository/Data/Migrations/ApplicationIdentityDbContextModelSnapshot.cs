@@ -180,6 +180,40 @@ namespace AgriculturalProductsStore.Repository.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("AgriculturalProductsStore.Models.Entity.AspController", b =>
+                {
+                    b.Property<string>("Action");
+
+                    b.Property<string>("Controller");
+
+                    b.Property<string>("Area");
+
+                    b.Property<string>("Desctiption");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.HasKey("Action", "Controller");
+
+                    b.ToTable("AspControllers");
+                });
+
+            modelBuilder.Entity("AgriculturalProductsStore.Models.Entity.AspRoleController", b =>
+                {
+                    b.Property<string>("IdentityRoleId");
+
+                    b.Property<string>("Controller");
+
+                    b.Property<string>("Action");
+
+                    b.Property<string>("Desctiption");
+
+                    b.HasKey("IdentityRoleId", "Controller", "Action");
+
+                    b.HasAlternateKey("Action", "Controller", "IdentityRoleId");
+
+                    b.ToTable("AspRoleControllers");
+                });
+
             modelBuilder.Entity("AgriculturalProductsStore.Models.Entity.Category", b =>
                 {
                     b.Property<string>("Id")
@@ -376,6 +410,14 @@ namespace AgriculturalProductsStore.Repository.Data.Migrations
                     b.HasOne("AgriculturalProductsStore.Models.Entity.ApplicationUser")
                         .WithMany("ApplicationUserTokens")
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("AgriculturalProductsStore.Models.Entity.AspRoleController", b =>
+                {
+                    b.HasOne("AgriculturalProductsStore.Models.Entity.ApplicationRole", "IdentityRole")
+                        .WithMany()
+                        .HasForeignKey("IdentityRoleId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

@@ -62,6 +62,11 @@ namespace AgriculturalProductsStore.Repository
                     .HasForeignKey(rc => rc.RoleId)
                     .IsRequired();
             });
+            modelBuilder.Entity<AspRoleController>()
+            .HasKey(c => new { c.IdentityRoleId, c.Controller, c.Action });
+
+            modelBuilder.Entity<AspController>()
+            .HasKey(c => new { c.Action, c.Controller});
         }
 
         public DbSet<UserInfor> UserInfors { get; set; }
@@ -70,5 +75,7 @@ namespace AgriculturalProductsStore.Repository
         public DbSet<Category> Categories { get; set; }
         public DbSet<CategoryChidren> CategoryChidrens { get; set; }
         public DbSet<Unit> Units { get; set; }
+        public DbSet<AspRoleController> AspRoleControllers { get; set; }
+        public DbSet<AspController> AspControllers { get; set; }
     }
 }

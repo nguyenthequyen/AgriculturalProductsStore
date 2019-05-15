@@ -10,7 +10,7 @@ namespace AgriculturalProductsStore.Repository.BaseRepository
     {
         IEnumerable<TEntity> GetAllRecords();
         Task<TEntity> GetFirstOrDefault(string id);
-        void Add(TEntity entity);
+        void Insert(TEntity entity);
         void Update(TEntity entity);
         void Delete(TEntity entity);
         void Save();

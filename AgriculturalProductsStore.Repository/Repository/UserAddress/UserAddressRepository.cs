@@ -18,7 +18,7 @@ namespace AgriculturalProductsStore.Repository
 
         public void AddUserAddress(UserAddress userAddress)
         {
-            Add(userAddress);
+            Insert(userAddress);
         }
 
         public void DeleteUserAddress(UserAddress userAddress)

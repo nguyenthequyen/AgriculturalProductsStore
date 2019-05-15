@@ -23,7 +23,7 @@ namespace AgriculturalProductsStore.Services
 
         public void AddUserInfor(UserInfor userInfor)
         {
-            Add(userInfor);
+            Insert(userInfor);
             _unitOfWork.Commit();
         }
 

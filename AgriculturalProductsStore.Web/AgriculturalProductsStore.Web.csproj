@@ -24,4 +24,9 @@
     <ProjectReference Include="..\AgriculturalProductsStore.Services\AgriculturalProductsStore.Services.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Home\" />
+  </ItemGroup>
+
 </Project>

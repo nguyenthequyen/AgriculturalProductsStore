@@ -18,9 +18,9 @@ namespace AgriculturalProductsStore.Services.BaseServices
             _reponsitory = reponsitory;
             _unitOfWork = unitOfWork;
         }
-        public void Add(TEntity entity)
+        public void Insert(TEntity entity)
         {
-            _reponsitory.Add(entity);
+            _reponsitory.Insert(entity);
         }
 
         public void Delete(TEntity entity)

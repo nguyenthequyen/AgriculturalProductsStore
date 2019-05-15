@@ -22,7 +22,7 @@ namespace AgriculturalProductsStore.Services
 
         public void AddUserAddress(UserAddress userAddress)
         {
-            Add(userAddress);
+            Insert(userAddress);
             _unitOfWork.Commit();
         }
 

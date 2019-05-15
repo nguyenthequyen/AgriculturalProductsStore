@@ -94,7 +94,7 @@ namespace AgriculturalProductsStore.Web.Controllers
         /// Created by: NTQuyen 06/05/2019
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Index(UserViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Index(UserViewModel model, string returnUrl = "")
         {
             if (ModelState.IsValid)
             {
@@ -159,7 +159,7 @@ namespace AgriculturalProductsStore.Web.Controllers
         /// Created by: NTQuyen 06/05/2019
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> UpdatePassword(string returnUrl)
+        public IActionResult UpdatePassword(string returnUrl)
         {
             return View();
         }
@@ -209,7 +209,7 @@ namespace AgriculturalProductsStore.Web.Controllers
         /// Created by: NTQuyen 06/05/2019
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> ManageAddress(string returnUrl = null)
+        public async Task<IActionResult> ManageAddress(string returnUrl = "")
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
             if (user != null)
@@ -249,7 +249,7 @@ namespace AgriculturalProductsStore.Web.Controllers
         /// Created by: NTQuyen 06/05/2019
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> UpdateAddress(string id, string returnUrl = null)
+        public async Task<IActionResult> UpdateAddress(string id, string returnUrl = "")
         {
             if (!string.IsNullOrEmpty(id))
             {
@@ -351,9 +351,8 @@ namespace AgriculturalProductsStore.Web.Controllers
         /// Created by: NTQuyen 06/05/2019
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> AddAddress(string returnUrl = null)
+        public IActionResult AddAddress(string returnUrl = null)
         {
-
             return View();
         }
         /// <summary>

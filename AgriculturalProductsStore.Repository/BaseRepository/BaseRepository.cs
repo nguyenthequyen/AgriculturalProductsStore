@@ -14,7 +14,7 @@ namespace AgriculturalProductsStore.Repository.BaseRepository
         {
             _dbContext = dbContext;
         }
-        public virtual void Add(TEntity entity)
+        public virtual void Insert(TEntity entity)
         {
             _dbContext.Set<TEntity>().Add(entity);
         }
